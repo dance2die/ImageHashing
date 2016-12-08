@@ -9,17 +9,26 @@ namespace ImageHashingTest
 {
     class Program
     {
-        public static string diff_1 = "diff1.jpg";
-        public static string same_1 = "same1.jpg";  // My original test has same_1 and same_2 as the same image
-        public static string same_2 = "same2.jpg";  // at different resolutions, so similarity = 100%
+        public static string file_1 = @"C:\Users\skim.WLDEV-DOMAIN\Desktop\aaa\RE Documents from WIS\test\FOLDER DOCUMENTS_General Records_Scanned  06162010_40646C2B - Copy.tif";
+        public static string file_2 = @"C:\Users\skim.WLDEV-DOMAIN\Desktop\aaa\RE Documents from WIS\test\FOLDER DOCUMENTS_General Records_Scanned  06162010_40646C2B.tif";  
+        public static string file_3 = @"C:\Users\skim.WLDEV-DOMAIN\Desktop\aaa\RE Documents from WIS\test\FOLDER DOCUMENTS_General Records_Scanned  06162010_40646C2B - Copy (2).tif";  
+        public static string file_4 = @"C:\Users\skim.WLDEV-DOMAIN\Desktop\aaa\RE Documents from WIS\test\FOLDER DOCUMENTS_General Records_Scanned  06162010_40646C2B - Copy (2).tif";  
+        public static string file_5 = @"C:\Users\skim.WLDEV-DOMAIN\Desktop\aaa\RE Documents from WIS\test\FOLDER DOCUMENTS_General Records_Scanned  06162010_40646C89.tif";  
+        public static string file_6 = @"C:\Users\skim.WLDEV-DOMAIN\Desktop\aaa\RE Documents from WIS\test\FOLDER DOCUMENTS_General Records_Scanned  06162010_40646C88.tif";
 
         static void Main(string[] args)
         {
-            Console.WriteLine(String.Format("Similarity, diff-same: {0}",
-                                            ImageHashing.ImageHashing.Similarity(diff_1, same_1)));
-            Console.WriteLine(String.Format("Similarity, same-same: {0}",
-                                            ImageHashing.ImageHashing.Similarity(same_1, same_2)));
-            return;
+            CompareAndWrite(file_1, file_2);
+            CompareAndWrite(file_1, file_3);
+            //CompareAndWrite(file_2, file_4);
+            //CompareAndWrite(file_2, file_4);
+            CompareAndWrite(file_1, file_5);
+            CompareAndWrite(file_1, file_6);
+        }
+
+        private static void CompareAndWrite(string file1, string file2)
+        {
+            Console.WriteLine($"Similarity, diff-same: {ImageHashing.ImageHashing.Similarity(file1, file2)}");
         }
     }
 }
